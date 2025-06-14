@@ -10,6 +10,7 @@
 		8D9FBD1C2DFD35D90084D936 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8D9FBD1B2DFD35D90084D936 /* FirebaseAuth */; };
 		8D9FBD1E2DFD35D90084D936 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8D9FBD1D2DFD35D90084D936 /* FirebaseFirestore */; };
 		8D9FBD202DFD35D90084D936 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8D9FBD1F2DFD35D90084D936 /* FirebaseStorage */; };
+		8DDF17952DFD64DD000C2456 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DDF17942DFD64DD000C2456 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		8D9FBCEE2DFD347F0084D936 /* Star Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Star Guide.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9FBCFB2DFD34810084D936 /* Star GuideTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Star GuideTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9FBD052DFD34810084D936 /* Star GuideUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Star GuideUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DDF17942DFD64DD000C2456 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -84,6 +86,7 @@
 		8D9FBCE52DFD347F0084D936 = {
 			isa = PBXGroup;
 			children = (
+				8DDF17942DFD64DD000C2456 /* GoogleService-Info.plist */,
 				8D9FBCF02DFD347F0084D936 /* Star Guide */,
 				8D9FBCFE2DFD34810084D936 /* Star GuideTests */,
 				8D9FBD082DFD34810084D936 /* Star GuideUITests */,
@@ -235,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DDF17952DFD64DD000C2456 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

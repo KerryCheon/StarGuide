@@ -1,52 +1,41 @@
-//
-//  ImagePicker.swift
-//  Star Guide
-//
-//  Created by Kerry Cheon on 6/13/25.
-//
 import SwiftUI
-import PhotosUI
 import UIKit
 
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var image: UIImage?
+    var sourceType: UIImagePickerController.SourceType = .photoLibrary
     var onDismiss: () -> Void
-
+    
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
-
-    func makeUIViewController(context: Context) -> PHPickerViewController {
-        var config = PHPickerConfiguration()
-        config.selectionLimit = 1
-        config.filter = .images
-
-        let picker = PHPickerViewController(configuration: config)
+    
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let picker = UIImagePickerController()
         picker.delegate = context.coordinator
+        picker.sourceType = sourceType
+        picker.allowsEditing = false
         return picker
     }
-
-    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {}
-
-    class Coordinator: NSObject, PHPickerViewControllerDelegate {
+    
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
+    
+    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         let parent: ImagePicker
-
+        
         init(_ parent: ImagePicker) {
             self.parent = parent
         }
-
-        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-            picker.dismiss(animated: true)
-            guard let provider = results.first?.itemProvider,
-                  provider.canLoadObject(ofClass: UIImage.self) else { return }
-
-            provider.loadObject(ofClass: UIImage.self) { image, _ in
-                DispatchQueue.main.async {
-                    self.parent.image = image as? UIImage
-                    self.parent.onDismiss()
-                }
+        
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let uiImage = info[.originalImage] as? UIImage {
+                parent.image = uiImage
             }
+            parent.onDismiss()
+        }
+        
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            parent.onDismiss()
         }
     }
 }
-
